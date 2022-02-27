@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2022-02-25 01:46:07</p>
+                <p class='attribute'><strong>Duration: </strong>63.66 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 7, Pass: 5, Error: 2</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>FindingElementsTest.FindingElementsTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_count_of_contents</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">TypeError: object of type 'WebElement' has no len()</p><p style="color:maroon;">Traceback (most recent call last):
+  File "E:\selenium\FindingElements\FindingElementsTest.py", line 49, in test_count_of_contents
+    self.assertEqual(7, len(contents))
+TypeError: object of type 'WebElement' has no len()
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_promotion</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_search_button_enabled</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_search_text_field_value</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_shopping_cart__status</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".alert-warning"}
+  (Session info: chrome=98.0.4758.102)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x012469A3+2582947]
+	Ordinal0 [0x011DA6D1+2139857]
+	Ordinal0 [0x010D3A98+1063576]
+	Ordinal0 [0x010FFF3E+1244990]
+	Ordinal0 [0x0110013B+1245499]
+	Ordinal0 [0x01129F52+1417042]
+	Ordinal0 [0x01118594+1344916]
+	Ordinal0 [0x0112834A+1409866]
+	Ordinal0 [0x01118366+1344358]
+	Ordinal0 [0x010F5176+1200502]
+	Ordinal0 [0x010F6066+1204326]
+	GetHandleVerifier [0x013EBE02+1675858]
+	GetHandleVerifier [0x014A036C+2414524]
+	GetHandleVerifier [0x012DBB01+560977]
+	GetHandleVerifier [0x012DA8D3+556323]
+	Ordinal0 [0x011E020E+2163214]
+	Ordinal0 [0x011E5078+2183288]
+	Ordinal0 [0x011E51C0+2183616]
+	Ordinal0 [0x011EEE1C+2223644]
+	BaseThreadInitThunk [0x76CDFA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77907A9E+286]
+	RtlGetAppContainerNamedObjectPath [0x77907A6E+238]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "E:\selenium\FindingElements\FindingElementsTest.py", line 65, in test_shopping_cart__status
+    empty_text = self.driver.find_element(By.CLASS_NAME, 'alert-warning').text
+  File "C:\python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 424, in execute
+    self.error_handler.check_response(response)
+  File "C:\python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".alert-warning"}
+  (Session info: chrome=98.0.4758.102)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x012469A3+2582947]
+	Ordinal0 [0x011DA6D1+2139857]
+	Ordinal0 [0x010D3A98+1063576]
+	Ordinal0 [0x010FFF3E+1244990]
+	Ordinal0 [0x0110013B+1245499]
+	Ordinal0 [0x01129F52+1417042]
+	Ordinal0 [0x01118594+1344916]
+	Ordinal0 [0x0112834A+1409866]
+	Ordinal0 [0x01118366+1344358]
+	Ordinal0 [0x010F5176+1200502]
+	Ordinal0 [0x010F6066+1204326]
+	GetHandleVerifier [0x013EBE02+1675858]
+	GetHandleVerifier [0x014A036C+2414524]
+	GetHandleVerifier [0x012DBB01+560977]
+	GetHandleVerifier [0x012DA8D3+556323]
+	Ordinal0 [0x011E020E+2163214]
+	Ordinal0 [0x011E5078+2183288]
+	Ordinal0 [0x011E51C0+2183616]
+	Ordinal0 [0x011EEE1C+2223644]
+	BaseThreadInitThunk [0x76CDFA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77907A9E+286]
+	RtlGetAppContainerNamedObjectPath [0x77907A6E+238]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_women_link_is_displayed</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_women_partial_link</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 7, Pass: 5, Error: 2 -- Duration: 63.66 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html

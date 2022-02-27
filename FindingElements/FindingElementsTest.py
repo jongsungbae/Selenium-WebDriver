@@ -1,17 +1,20 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
-class HomePageTest(unittest.TestCase):
+
+class FindingElementsTest(unittest.TestCase):
     @classmethod
-    def SetUpClass(cls):
+    def setUpClass(cls):
         # create chrome session
-        cls.driver = webdriver.Chrome("D:\selenium\chromedriver.exe")
+        baseUrl = "http://automationpractice.com/index.php"
+        s = Service("E:\selenium\drivers\chromedriver.exe")
+        cls.driver = webdriver.Chrome(service=s)
+        # cls.driver = webdriver.Chrome("E:\selenium\drivers\chromedriver.exe")
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
-
-        # navigate to the application home page
-        cls.driver.get("http://automationpractice.com/index.php")
+        cls.driver.get(baseUrl)
 
     def test_search_text_field_value(self):
         # get the search box using Xpath
@@ -21,13 +24,13 @@ class HomePageTest(unittest.TestCase):
 
     def test_search_button_enabled(self):
         # get the search button
-        searchBtn = self.driver.find_element((By.NAME, 'submit_search'))
+        searchBtn = self.driver.find_element(By.NAME, 'submit_search')
         # check Search button is enabled
         self.assertTrue(searchBtn.is_enabled())
 
     def test_women_link_is_displayed(self):
         # get the Women link
-        women_link = self.driver.find_element(By.LINK_TEXT, 'women')
+        women_link = self.driver.find_element(By.LINK_TEXT, 'WOMEN')
         # check link text is displayed/visible
         self.assertTrue(women_link.is_displayed())
 
@@ -39,9 +42,9 @@ class HomePageTest(unittest.TestCase):
 
     def test_count_of_contents(self):
         # get content list
-        content_list = self.driver.find_element(By.CLASS_NAME, 'htmlcontent-home')
+        content_list = self.driver.find_element(By.CLASS_NAME, 'tab-content')
         # get image from the content lists
-        contents = content_list.find_element(By.TAG_NAME, 'img')
+        contents = content_list.find_element(By.TAG_NAME, 'li')
         # check
         self.assertEqual(7, len(contents))
 
@@ -57,20 +60,15 @@ class HomePageTest(unittest.TestCase):
 
     def test_shopping_cart__status(self):
         empty_status = self.driver.find_element(By.XPATH, '//*[@id="header"]/div[3]/div/div/div[3]/div/a/span[5]')
-        if(self.assertTrue(empty_status)):
-            empty_status.click()
-        empty_text = self.driver.find_element(By.CLASS_NAME, 'alert-warning')
+        if (self.assertTrue(empty_status)):
+          empty_status.click()
+        empty_text = self.driver.find_element(By.CLASS_NAME, 'alert-warning').text
         self.assertEqual("Your shopping cart is empty.", empty_text)
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
 
+
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
-
-
