@@ -6,13 +6,13 @@ from selenium.webdriver.common.by import By
 
 class RegisterNewUser(unittest.TestCase):
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         baseUrl = "https://www.phptravels.net/"
         s = Service("E:\selenium\drivers\chromedriver.exe")
-        self.driver = webdriver.Chrome(service=s)
-        self.driver.implicitly_wait(30)
-        self.driver.maximize_window()
-        self.driver.get(baseUrl)
+        cls.driver = webdriver.Chrome(service=s)
+        cls.driver.implicitly_wait(30)
+        cls.driver.maximize_window()
+        cls.driver.get(baseUrl)
 
     def test_move_to_signUp(self):
         # click on sign up btn
@@ -49,9 +49,9 @@ class RegisterNewUser(unittest.TestCase):
         # move to login page
         self.assertTrue("Login - PHPTRAVELS", self.driver.title)
 
-        @classmethod
-        def tearDownClass(cls):
-            self.driver.quit()
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
 
 if __name__ == '__main__':
     unittest.main()
