@@ -31,16 +31,12 @@ class AlertTest(unittest.TestCase):
     def test_compare_products_removal_alert(self):
         # click on Remove all btn
         self.driver.find_element(By.LINK_TEXT, 'Clear All').click()
-
         # switch to the alert
         alert = self.driver.switch_to.alert
-
         # get the text from alert
         alert_text = alert.text
-
         # check alert text
         self.assertEqual('Are you sure you would like to remove all products from your comparison?', alert_text)
-
         # click on OK button
         alert.accept()
 
