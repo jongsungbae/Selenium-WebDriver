@@ -1,60 +1,68 @@
-import time
 import unittest
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-class RegisterNewUser(unittest.TestCase):
+
+class RegisterLoginTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        baseUrl = "https://www.phptravels.net/"
-        s = Service("E:\selenium\drivers\chromedriver.exe")
+        baseUrl = "http://magento-demo.lexiconn.com/"
+        s = Service("D:\selenium\drivers\chromedriver.exe")
         cls.driver = webdriver.Chrome(service=s)
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
         cls.driver.get(baseUrl)
 
-    def test_move_to_signUp(self):
-        # click on sign up btn
-        self.driver.find_element(By.LINK_TEXT, 'Signup').click()
+    def test_move_to_register(self):
+        # move to Login page
+        self.driver.find_element(By.LINK_TEXT, 'Log In').click()
 
-        # check the title
-        self.assertTrue("Signup - PHPTRAVELS", self.driver.title)
+        # get the create account btn and check enable
+        create_account_btn = self.driver.find_element(By.XPATH, '//*[@id="login-form"]/div/div[1]/div[2]/a')
+        self.assertTrue(create_account_btn.is_displayed() and create_account_btn.is_enabled())
 
-    def test_signUp_page(self):
-        # get all the fields from create an Account form
-        first_name = self.driver.find_element(By.NAME, 'first_name')
-        last_name = self.driver.find_element(By.NAME, 'last_name')
-        phone = self.driver.find_element(By.NAME, 'phone')
-        email = self.driver.find_element(By.NAME, 'email')
-        password = self.driver.find_element(By.NAME, 'password')
-        drop_menu = self.driver.find_element(By.ID, 'select2-account_type-container')
-        submit_button = self.driver.find_element(By.XPATH,'//*[@id="fadein"]/div[1]/div/div[2]/div[2]/div/form/div[7]/button')
+        # move to create account page
+        create_account_btn.click()
+        # check title
+        driver = self.driver
+        self.assertEqual("Create New Customer Account", driver.title)
+
+    def test_regester_field(self):
+        # get all the fields
+        first_name = self.driver.find_element(By.ID, 'firstname')
+        last_name = self.driver.find_element(By.ID, 'lastname')
+        email_address = self.driver.find_element(By.ID, 'email_address')
+        password = self.driver.find_element(By.ID, 'password')
+        confirm_password = self.driver.find_element(By.ID, 'confirmation')
+        news_letter_subscription = self.driver.find_element(By.ID, 'is_subscribed')
+        submit_button = self.driver.find_element(By.XPATH, '//*[@id="form-validate"]/div[2]/button')
+
+        # check maxlength or first name and last name
+        self.assertEqual('255', first_name.get_attribute('maxlength'))
+        self.assertEqual('255', last_name.get_attribute('maxlength'))
 
         # check all fields are enabled
-        self.assertTrue(first_name.is_enabled() and last_name.is_enabled() and phone.is_enabled() and email.is_enabled()
-                        and password.is_enabled() and drop_menu.is_enabled() and submit_button.is_enabled())
+        self.assertTrue(
+            first_name.is_enabled() and last_name.is_enabled() and email_address.is_enabled() and password.is_enabled() and
+            confirm_password.is_enabled() and news_letter_subscription.is_enabled() and submit_button.is_enabled())
+
+        # check Newsletter is unchecked
+        self.assertFalse(news_letter_subscription.is_selected())
 
         # fill out all the fields
-        first_name.send_keys("test")
-        last_name.send_keys("user1")
-        phone.send_keys("123-456-7894")
-        email.send_keys("test@test.com")
-        password.send_keys("test1234")
+        first_name.send_keys('ftest')
+        last_name.send_keys('ltest')
+        email_address.send_keys('test@test.com')
+        password.send_keys('test')
+        confirm_password.send_keys('test')
+        news_letter_subscription.click()
 
-        # submit button click
+        # click submit button
         submit_button.click()
-        time.sleep(5)
 
-        # move to login page
-        self.assertTrue("Login - PHPTRAVELS", self.driver.title)
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
-
-if __name__ == '__main__':
-    unittest.main()
 
 
 
