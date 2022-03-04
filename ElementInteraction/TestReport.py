@@ -4,6 +4,7 @@ from HtmlTestRunner import HTMLTestRunner
 # from RegisterNewUser import RegisterNewUser
 # from LoginUser import LoginUser
 from NavigationTest import NavigationTest
+from AlertTest import AlertTest
 
 # get the firectory path to output report file
 dir = os.getcwd()
@@ -12,7 +13,8 @@ dir = os.getcwd()
 # registerNewUser = unittest.TestLoader().loadTestsFromTestCase(RegisterNewUser)
 # loginUser = unittest.TestLoader().loadTestsFromTestCase(LoginUser)
 naviTest = unittest.TestLoader().loadTestsFromTestCase(NavigationTest)
-smoke_tests = unittest.TestSuite([naviTest])
+alertTest = unittest.TestLoader().loadTestsFromTestCase(AlertTest)
+smoke_tests = unittest.TestSuite([naviTest, alertTest])
 
 # configure HTMLTestRunner options
 runner = HTMLTestRunner(

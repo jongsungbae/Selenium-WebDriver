@@ -7,7 +7,7 @@ class AlertTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         baseUrl = "http://magento-demo.lexiconn.com/"
-        s = Service("D:\selenium\drivers\chromedriver.exe")
+        s = Service("E:\selenium\drivers\chromedriver.exe")
         cls.driver = webdriver.Chrome(service=s)
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
@@ -37,8 +37,14 @@ class AlertTest(unittest.TestCase):
         alert_text = alert.text
         # check alert text
         self.assertEqual('Are you sure you would like to remove all products from your comparison?', alert_text)
+        # click on Cancle button
+        alert.dismiss()
+        self.driver.find_element(By.LINK_TEXT, 'Clear All').click()
         # click on OK button
         alert.accept()
+        # check if compare products is empty
+        emp_text = self.driver.find_element(By.XPATH, '//*[@id="top"]/body/div/div[2]/div[2]/div/div[3]/div/div[2]/p').text
+        self.assertEqual("You have no items to compare.", emp_text)
 
     @classmethod
     def tearDownClass(cls):
