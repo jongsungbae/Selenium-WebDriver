@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 
-class RegisterLoginTest(unittest.TestCase):
+class RegisterNewUser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         baseUrl = "http://magento-demo.lexiconn.com/"
@@ -61,6 +61,13 @@ class RegisterLoginTest(unittest.TestCase):
 
         # click submit button
         submit_button.click()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+
+if __name__ == '__main__':
+    unittest.main()
 
 
 
