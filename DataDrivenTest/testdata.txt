@@ -1,0 +1,4 @@
+CategoryOfProduct, NumberOfProducts
+phones, 1
+music, 5
+iphone 5s, 0
