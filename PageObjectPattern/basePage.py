@@ -11,7 +11,7 @@ class BasePage(object):
 
     @property
     def search(self):
-        from search import SearchRegion
+        from searchRegion import SearchRegion
         return SearchRegion(self.driver)
 
 class InvalidPageException(Exception):

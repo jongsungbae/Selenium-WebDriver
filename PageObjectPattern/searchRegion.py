@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 from basePage import BasePage
 from basePage import InvalidPageException
-from product import ProductPage
+from productPage import ProductPage
 
 class SearchRegion(BasePage):
     _search_box_locator = 'q'
@@ -11,10 +11,10 @@ class SearchRegion(BasePage):
         super(SearchRegion, self).__init__(driver)
 
     def searchFor(self, term):
-        self.search_field = self.driver.find_element(By.NAME, self._search_box_locator)
-        self.search_field.clear()
-        self.search_field.send_keys(term)
-        self.search_field.submit()
+        search_field = self.driver.find_element(By.NAME, self._search_box_locator)
+        search_field.clear()
+        search_field.send_keys(term)
+        search_field.submit()
         return SearchResults(self.driver)
 
 class SearchResults(BasePage):
