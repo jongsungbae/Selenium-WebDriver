@@ -27,12 +27,6 @@ class ScreenshotTest(unittest.TestCase):
         self.takeScreenshot()
 
     def takeScreenshot(self):
-        # check size of windows using javascript
-        height = self.driver.execute_script("return window.innerHeight;")
-        width = self.driver.execute_script("return window.innerWidth;")
-        print("Height: " + str(height))
-        print("Width: " + str(width))
-
         directory = "D:\\selenium\\AdvancedInteraction\\screenshot\\"
         fileName = str(round(time.time() * 1000)) + ".png"
         directory_file = directory + fileName
