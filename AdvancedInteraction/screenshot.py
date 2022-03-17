@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 
-class WaitingTest(unittest.TestCase):
+class ScreenshotTest(unittest.TestCase):
     def setUp(self):
         baseUrl = "http://automationpractice.com/index.php"
         s = Service("D:\selenium\drivers\chromedriver.exe")
