@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class WaitingTest(unittest.TestCase):
+class SwitchTest(unittest.TestCase):
     def setUp(self):
         baseUrl = "https://courses.letskodeit.com/practice"
         s = Service("E:\selenium\drivers\chromedriver.exe")
