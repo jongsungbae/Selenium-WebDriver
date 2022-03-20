@@ -5,26 +5,23 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 
-class DragAndDrop(unittest.TestCase):
+class Slider(unittest.TestCase):
     def setUp(self):
-        baseUrl = "https://jqueryui.com/droppable/"
+        baseUrl = "https://jqueryui.com/slider/"
         s = Service("E:\selenium\drivers\chromedriver.exe")
         self.driver = webdriver.Chrome(service=s)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         self.driver.get(baseUrl)
 
-    def test_drag_and_drop(self):
+    def test_slider(self):
         self.driver.switch_to.frame(0)
-        fromElement = self.driver.find_element(By.ID, 'draggable')
-        toElement = self.driver.find_element(By.ID, 'droppable')
+        element = self.driver.find_element(By.XPATH, ".//div[@id='slider']//span")
         time.sleep(2)
         try:
             actions = ActionChains(self.driver)
-            actions.drag_and_drop(fromElement, toElement).perform()
-            #actions.click_and_hold(fromElement).move_to_element(toElement).release().perform()
-            print("Drag and drop element successful")
-            time.sleep(2)
+            actions.drag_and_drop_by_offset(element, 100, 0).perform()
+            print("success")
         except:
             print("Fail")
 
