@@ -12,10 +12,10 @@ from selenium.webdriver.common.by import By
 class ScreenshotTest(unittest.TestCase):
     def setUp(self):
         baseUrl = "http://automationpractice.com/index.php"
-        s = Service("D:\selenium\drivers\chromedriver.exe")
+        s = Service("E:\selenium\drivers\chromedriver.exe")
         self.driver = webdriver.Chrome(service=s)
         self.driver.implicitly_wait(30)
-        # self.driver.maximize_window()
+        self.driver.maximize_window()
         self.driver.get(baseUrl)
 
     def test_screenshot_login(self):
@@ -27,7 +27,7 @@ class ScreenshotTest(unittest.TestCase):
         self.takeScreenshot()
 
     def takeScreenshot(self):
-        directory = "D:\\selenium\\AdvancedInteraction\\screenshot\\"
+        directory = "E:\\selenium\\AdvancedInteraction\\screenshot\\"
         fileName = str(round(time.time() * 1000)) + ".png"
         directory_file = directory + fileName
 
