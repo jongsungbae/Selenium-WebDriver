@@ -2,12 +2,12 @@ import pytest
 
 @pytest.fixture()
 def setUp():
-    print("Running conftest setUp")
+    print("Running method level setUp")
     yield
-    print("Running conftest tearDown")
+    print("Running method level tearDown")
 
 @pytest.fixture(scope="module")
-def ontTimeSetUp():
-    print("Running conftest on time setUp")
+def oneTimeSetUp():
+    print("Running one time setUp")
     yield
-    print("Running conftest on time tearDown")
+    print("Running one time tearDown")
